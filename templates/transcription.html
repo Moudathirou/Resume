@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreativeHub - Transcription Audio</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transcription.css') }}">
+   
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CreativeHub</div>
+    </header>
+    <main class="main-content">
+        <div id="transcription-page" class="tool-page">
+            <h2>Transcription Audio Intelligente</h2>
+            
+            <button id="recordButton" class="record-btn">Commencer l'enregistrement</button>
+            
+            <input type="file" id="transcriptionAudio" accept="audio/*,video/*">
+            <label for="transcriptionAudio" class="upload-label">📁 Sélectionner un fichier audio/vidéo</label>
+            
+            <div id="transcription-audio-container"></div>
+            
+            <div class="output-container">
+                <div class="output-section">
+                    <h3>Transcription</h3>
+                    <textarea id="transcription-output"  placeholder="La transcription apparaîtra ici..."></textarea>
+                </div>
+                <div class="output-section">
+                    <h3>Résumé</h3>
+                    <textarea id="summary-output" readonly placeholder="Le résumé apparaîtra ici..." class="hidden"></textarea>
+                </div>
+                <div class="output-section">
+                    <h3>Éléments Clés</h3>
+                    <textarea id="items-output" readonly placeholder="Les éléments clés apparaîtront ici..." class="hidden"></textarea>
+                </div>
+            </div>
+            
+            <button id="summarize-btn" class="use-tool-btn hidden">Analyser et Résumer</button>
+
+            
+            <div class="email-section">
+                <h3>Rédiger un email</h3>
+                <input type="email" id="senderEmail" class="email-input" placeholder="Votre email">
+                <input type="text" id="emailSubject" class="email-input" placeholder="Objet de l'email">
+                <input type="text" id="emailRecipients" class="email-input" placeholder="Destinataires (séparer les adresses par des virgules)">
+                <textarea id="emailContent" class="email-input email-content" placeholder="Contenu de l'email"></textarea>
+               
+                <button id="sendEmail" class="use-tool-btn">Envoyer l'email</button>
+            </div>
+            
+            
+            
+            
+            
+    </main>
+
+   
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
+
+
+
+

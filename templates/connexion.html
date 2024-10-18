@@ -1,0 +1,196 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevolutionTranscription - Connexion SSO</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #f0f4f8;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+    }
+    
+    .login-container {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        max-width: 90%;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    h1 {
+        color: #005bea;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+    
+    .input-group {
+        margin-bottom: 20px;
+        position: relative;
+        text-align: left;
+    }
+    
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    input:focus {
+        outline: none;
+        border-color: #005bea;
+    }
+    
+    label {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+    
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 5px;
+        font-size: 12px;
+        color: #005bea;
+        background: white;
+        padding: 0 5px;
+    }
+    
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        background: #005bea;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    button:hover {
+        background: #0046b8;
+    }
+    
+    .fireworks-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+    
+    .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .fade-out {
+        animation: fadeOut 0.5s ease-in-out;
+    }
+    </style>
+    </head>
+    <body>
+        <div class="login-container fade-in">
+            <h1>Connexion SSO</h1>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="fullName" name="fullName" required placeholder=" ">
+                    <label for="fullName">Nom complet</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required placeholder=" ">
+                    <label for="email">Email</label>
+                </div>
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+        <div class="fireworks-container"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fireworks/1.0.0/fireworks.min.js"></script>
+    <script>
+    
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fullName, email }),
+            credentials: 'include' // Important pour maintenir la session
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                alert('Login failed: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred during login');
+        });
+    });
+    
+    function redirectToTranscriptionPage() {
+        window.location.href = '/';
+    }
+    
+    function startFireworks() {
+        const container = document.querySelector('.fireworks-container');
+        const fireworks = new Fireworks(container, {
+            speed: 2,
+            acceleration: 1.05,
+            friction: 0.97,
+            gravity: 1.5,
+            particles: 100,
+            explosion: 10
+        });
+    
+        fireworks.start();
+    
+        setTimeout(() => {
+            fireworks.stop();
+            redirectToTranscriptionPage();
+        }, 5000);
+    }
+    </script>
+    </body></html>

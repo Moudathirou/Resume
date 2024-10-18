@@ -1,0 +1,228 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1, h2 {
+    color: #005bea;
+    margin-bottom: 20px;
+}
+
+.tool-page {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+#transcription-output{
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    cursor: text;
+}
+
+#summary-output, #items-output {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+   
+}
+
+#transcription-output:focus, #summary-output:focus, #items-output:focus {
+    border-color: #005bea;
+    box-shadow: 0 0 0 2px rgba(0, 91, 234, 0.2);
+}
+
+#transcription-audio-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#transcription-audio-container audio {
+    width: 100%;
+    max-width: 500px;
+}
+
+.use-tool-btn {
+    background: #005bea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.use-tool-btn:hover {
+    background: #0046b8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 70, 184, 0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+.conditions-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.condition {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.condition-symbol {
+    margin-right: 15px;
+    font-size: 24px;
+}
+
+.valid {
+    color: #4CAF50;
+}
+
+.invalid {
+    color: #F44336;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #e0e0e0;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-label:hover {
+    background: #d0d0d0;
+}
+
+#transcriptionAudio {
+    display: none;
+}
+
+.output-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.output-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.output-section h3 {
+    margin-bottom: 10px;
+    color: #005bea;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.processing {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+
+.record-btn {
+background: #dc3545;
+color: white;
+border: none;
+padding: 12px 20px;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 16px;
+font-weight: bold;
+margin: 20px 0;
+}
+.record-btn.recording {
+animation: pulse 1s infinite;
+}
+.email-section {
+margin-top: 20px;
+}
+
+.email-content {
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+min-height: 300px; /* Définit la hauteur souhaitée */
+resize: vertical; /* Permet le redimensionnement vertical */
+font-size: 16px; /* Améliore la lisibilité */
+line-height: 1.5; /* Améliore l'espacement des lignes */
+}
+
+.email-input {
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+
+}
+
+@keyframes pulse {
+0% { opacity: 1; }
+50% { opacity: 0.5; }
+100% { opacity: 1; }
+}
